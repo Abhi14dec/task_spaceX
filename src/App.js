@@ -35,7 +35,7 @@ function App() {
   }
 
   const onYear = (year) =>{
-    console.log(year,"=====year")
+  
     axios.get(`https://api.spaceXdata.com/v3/launches?limit=10&launch_success=true&land_success=true&launch_year=${year}`)
     .then(res => {
       if (res.status === 200) {
@@ -43,7 +43,7 @@ function App() {
       }
     })
   }
-  console.log(result)
+  
   return (
     <section className="shop-content_wrapper pb-55">
       <div className="container-fluid">
@@ -63,7 +63,7 @@ function App() {
             <div className="year-box clearfix mt-2">
               {years.map(even => {
                 return (
-                  <div className="pull-left ml-4">
+                  <div className="pull-left ml-3 mt-2">
                     <button className="btn btn-success btn-sm" onClick={onYear.bind(this,even)}>{even}</button>
                   </div>
                 )
