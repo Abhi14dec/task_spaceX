@@ -13,12 +13,16 @@ function App() {
           setData(res.data)
         }
       })
+    
+  },[]);
+
+  useEffect(() => {
     sortData();
   });
 
 
 
-  const sortData = (nums) => {
+  const sortData = () => {
     const yearData = data.map(item => {
       return item.launch_year
     })
@@ -34,15 +38,15 @@ function App() {
     
   }
 
-  const onYear = (year) =>{
+  // const onYear = (year) =>{
   
-    axios.get(`https://api.spaceXdata.com/v3/launches?limit=10&launch_success=true&land_success=true&launch_year=${year}`)
-    .then(res => {
-      if (res.status === 200) {
-        setResult(res.data)
-      }
-    })
-  }
+  //   axios.get(`https://api.spaceXdata.com/v3/launches?limit=10&launch_success=true&land_success=true&launch_year=${year}`)
+  //   .then(res => {
+  //     if (res.status === 200) {
+  //       setResult(res.data)
+  //     }
+  //   })
+  // }
   
   return (
     <section className="shop-content_wrapper pb-55">
@@ -64,7 +68,7 @@ function App() {
               {years.map(even => {
                 return (
                   <div className="pull-left ml-3 mt-2">
-                    <button className="btn btn-success btn-sm" onClick={onYear.bind(this,even)}>{even}</button>
+                    <button className="btn btn-success btn-sm">{even}</button>
                   </div>
                 )
               })}
